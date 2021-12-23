@@ -1,0 +1,146 @@
+
+Comandos basico mongodb
+javascript
+
+x=200
+x
+200
+
+new Date()
+
+new Date("2021/12/22")
+
+Math.sin(Math.PI/2)
+
+funtion factorial(n){if(n<=1) return 1; return n* factorial(n-1)}
+
+formato bson binario
+mongodb
+db
+show dbs
+help
+db.help
+use webstore
+
+db.products.insert({"name":"Laptop"})
+show collections
+use
+db.dropDatabase()
+db.createCollection("users")
+db.createCollection("products")
+db.createCollection("sellers")
+show collections
+eliminando collections
+db.users.drop()
+db.products.drop()
+
+creando un archivo json o mas llamado documento
+
+{
+    "nombre":"laptop",
+    "precio":40.2,
+    "active":false,
+    "created_at":new Date("22/12/2021"),
+    "somedata":[1,"a",[]],
+    "factucturer":{
+        "name":"dell",
+        "version":"xps",
+        "location":{
+            "city":"usa",
+            "address":"asdasd"
+        }
+    }
+}
+
+db.products.insert(
+{
+    "nombre":"laptop",
+    "precio":40.2,
+    "active":false,
+    "created_at":new Date("22/12/2021"),
+    "somedata":[1,"a",[]],
+    "factucturer":{
+        "name":"dell",
+        "version":"xps",
+        "location":{
+            "city":"usa",
+            "address":"asdasd"
+        }
+    }
+})
+
+db.products.find()
+db.products.find().pretty()
+
+creando otra bd
+
+use mystore
+
+db.createCollection("products")
+db.products.insert({"name":"keyborad"})
+db.products.insert({"name":"laptop","price":999.99})
+
+insertando varios ipo array
+db.products.insert([
+    {
+        "name":"mouse",
+        "descripcion":"razer mouse",
+        "tags":["computers","gaming"],
+        "quantity":14,
+        "created_at":new Date()
+    },
+    {  
+        "name":"monitor",
+        "descripcion":"lg monitor",
+        "tags":["computers","gaming"],
+        "quantity":3,
+        "created_at":new Date()
+    }
+])
+
+buscar por atributor
+db.products.find({name:"mouse"})
+db.products.find({"tags":"computers"})
+db.products.find({"tags":"computers","name":"monitor"})
+
+db.products.findOne({"tags":"computers"})
+db.products.findOne({"tags":"computers"},{"name":1,"descripcion":1,"_id":0})
+
+db.products.find({"tags":"computers"}).sort({name:1})
+
+db.products.find().limit(2)
+
+db.products.count()
+
+db.products.find().forEach(product =>print("Product Name:"+product.name+" Product Price:"+product.price))
+
+db.products.update({"name":"keyboard"},{"price":99.9})
+
+db.products.update({"price":99.99},{"name":"keyboard","price":99.99})
+
+db.products.update({"name":"laptop"},{"$set":{"description":"lg gram laptop"}})
+
+db.products.update({"name":"desktop"},{$set:{"description":"Gaming desktop"}},{upsert:true})
+
+db.products.update({"name":"keyboard"},{$inc:{"price":0.01}})
+
+db.products.update({"name":"laptop"},{$rename:{"name":"nombre"}})
+
+db.products.remove({"name":"keyboard"})
+
+db.products.remove({})
+
+
+otro proyeto meseroapp
+
+plato{id,nombre,estado}
+cliente{id,nombre,apellidos,fechanac,urlfoto}
+facturaItem{id,cantidad,plato}
+factura{id,id_cliente,id_usuario,descripcion,observacion,creado_en}
+usuario{id,usuario,clave,estado}
+usuario_rol{idUusario,idRol}
+rol{id,nombre}
+menu_rol{idMenu,IdRol}
+menu{id,icono,nombre,url}
+
+
